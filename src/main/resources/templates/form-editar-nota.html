@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="form-editar-nota(notaAeditar)">
+        <form th:action="@{/admin/modificarnotas}" method="post" th:object="${notaAeditar}">
+        <p th:text="${notaAeditar.getUser().getAlumno().getNombreCompleto()}"></p>
+        <p th:text="${notaAeditar.modulo.nombre}"></p>
+        <p th:text="${notaAeditar.curso.nombre}"></p>
+            <p th:text="${notaAeditar.aprobado}"></p>
+            <input type="hidden" name="modulo" th:value="${notaAeditar.getModulo()}" th:field="*{modulo}">
+            <input type="hidden" name="notaId" th:value="${notaAeditar.getId()}" >
+            <input type="number" name="nota" th:placeholder="${notaAeditar.nota}" th:value="${notaAeditar.nota}">
+            <button type="submit">modificar</button>
+        </form>
+    </div>
+</head>
+
+</html>

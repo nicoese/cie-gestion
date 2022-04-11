@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="form-nuevo-user(newUser, error)">
+        <form th:action="@{/registro/crear-user/crear-alumno}" method="post" th:object="${newUser}" name="userAlumno">
+            <p th:if="${error!=null}" th:text="${error}"></p>
+            <input type="text" th:placeholder="email"  th:field="*{email}">
+            <input type="text" th:placeholder="dni"  th:field="*{username}">
+
+            <button type="submit">siguiente</button>
+        </form>
+    </div>
+</head>
+</html>

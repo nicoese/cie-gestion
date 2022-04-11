@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    /}-->
+    <div th:fragment="form-nuevo-alumno(newAlumno, userId, error)">
+        <form th:action="@{/registro/crear-alumno/{userId}(userId=${userId})}" method="post" th:object="${newAlumno}"
+              name="alumno">
+            <p th:if="${error!=null}" th:text="${error}"></p>
+            <input type="text" th:placeholder="nombre" th:field="*{nombre}">
+            <input type="text" th:placeholder="apellido" th:field="*{apellido}">
+            <input type="text" th:placeholder="domicilio" th:field="*{domicilio}">
+            <input type="text" th:placeholder="numerodetelefono" th:field="*{numeroDeTelefono}">
+<!--            <input type="datetime-local" th:placeholder="fechadenac" th:field="*{fechaDeNacimiento}">-->
+            <select name="sexo" id="">
+                <option th:each="sexo:${newAlumno.getSexos()}" th:text="${sexo.name()}" th:value="${sexo}"
+                        th:field="*{sexo}"></option>
+            </select>
+            <button type="submit">guardar</button>
+        </form>
+    </div>
+</head>
+
+</html>

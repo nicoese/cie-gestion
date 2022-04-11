@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <div th:fragment="editar-user(userAEditar, error)">
+    <form >
+      <label for="email">
+        email
+        <input type="email" id="email" th:placeholder="${userAEditar.email}">
+      </label>
+      <label for="dni">
+        dni
+        <input type="text" id="dni" th:placeholder="${userAEditar.username}">
+      </label>
+    <label for="nombre">
+        nombre
+        <input type="text" id="nombre" th:placeholder="${userAEditar.getAlumno().nombre}">
+      </label>
+    <label for="apellido">
+        apellido
+        <input type="text" id="apellido" th:placeholder="${userAEditar.getAlumno().apellido}">
+      </label>
+   <label for="domicilio">
+        domicilio
+        <input type="text" id="domicilio" th:placeholder="${userAEditar.getAlumno().domicilio}">
+      </label>
+    <label for="nro. de telefono">
+        nro. de telefono
+        <input type="text" id="nro. de telefono" th:placeholder="${userAEditar.getAlumno().numeroDeTelefono}">
+      </label>
+        <button id="btnModificarAlumno">submit</button>
+    </form>
+  </div>
+</head>
+
+</html>

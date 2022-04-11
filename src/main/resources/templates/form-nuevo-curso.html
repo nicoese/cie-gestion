@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="form-nuevo-curso(newCurso)">
+        <form th:action="@{/curso/crear-curso}" method="post" th:object="${newCurso}">
+            <input type="text" placeholder="nombre del curso" th:field="*{nombre}">
+            <select name="categoria" id="">
+                <option th:each="cat:${newCurso.getCategorias}" th:text="${cat.name()}" th:value="${cat}"></option>
+            </select>
+            <button type="submit">cargar</button>
+        </form>
+    </div>
+</head>
+
+</html>

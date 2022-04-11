@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="lista-cursos-admin(cursos, url)">
+        <form th:action="@{/admin/desplegarmodulos}">
+            <p>seleccione el curso</p>
+            <select name="cursoId" id="cursoId">
+                <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+            </select>
+            <input type="hidden" name="url" th:value="${url}">
+
+            <button type="submit">seleccionar</button>
+        </form>
+    </div>
+</head>
+
+</html>

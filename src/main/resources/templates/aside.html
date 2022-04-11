@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="aside">
+        <h1 th:text="${session.usersession}"></h1>
+        <ul>
+            <li><a href="">Cargar Notas</a></li>
+            <li><a href="">Ver o modificar datos de alumno</a></li>
+        </ul>
+    </div>
+</head>
+
+</html>

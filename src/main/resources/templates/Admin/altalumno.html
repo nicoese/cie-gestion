@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AltaAlumno</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/style.css">
+
+
+</style>
+
+</head>
+<section class="borde1">
+    <header >
+        <img src="/Logos/LOGO-CIE.png" >
+      </header>
+      <h4 class="gestion">Gestion Administrador</h4>
+    </section>
+    <div class="curso">
+        <h1>NOMBRE DEL CURSO</h1>
+        <h2>Nombre Modulo</h2>
+    </div>
+    <div class="alta">
+        <h3>Nuevo Alumno</h3>
+    <form  th:action="@{}" method="POST">
+        <label for="nombre">Nombre</label>
+        <input class="input2" type="text" name="nombre" id="nombre"><br>
+        <label for="apellido">Apellido</label>
+        <input class="input2" type="text" name="apellido" id="apellido"><br>
+        <label for="dni">D.N.I.</label>
+        <input class="input2" type="text" name="dni" id="dni"><br>
+        <label for="fechanac">Fecha de Nacimiento</label>
+        <input class="input2" type="text" name="fechanac" id="fechanac"><br>
+        <label for="domicilio">Domicilio</label>
+        <input class="input2" type="text" name="domicilio" id="domicilio"><br>
+        <label for="correoelectronico">E-mail</label>
+        <input class="input2" type="text" name="correoelectronico" id="correoelectronico"><br>
+        <button class="cerrar2" type="submit" >Guardar</button>
+    </form>
+</div>
+
+
+    <div class="cerrar2">
+        <button class="cerrar2"  >Seleccionar Modulo</button>
+        </div>
+    <div class="cerrar2">
+        <button class="cerrar2"  >Seleccionar Curso</button>
+        </div>
+    <div class="cerrar2">
+        <button class="cerrar2"  >Cerrar sesión</button>
+        </div>
+    
+    </body>
+    </html>

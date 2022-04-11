@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="fragment(users)">
+        <p th:text="${session.usersession.getAdmin().nombre}"></p>
+
+        <table>
+            <tbody>
+            <tr th:each="user:${users}">
+                <td th:if="${user.getRole().name().equals('ADMIN')}"
+                    th:text="${user.getAdmin().getNombre()}"></td>
+                <td th:if="${user.getRole().name().equals('ALUMNO')}"
+                    th:text="${user.getAlumno().getNombre()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</head>
+
+</html>

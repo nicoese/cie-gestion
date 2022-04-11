@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="enlistar-alumno(newInscripcion, cursos)">
+        <form th:action="@{/inscripcion/enlistar}" method="post" >
+            <input type="text" placeholder="dni del alumno" name="userId">
+            <label for="cursos">seleccione el curso</label>
+            <select name="cursoId" id="cursos">
+                <option th:each="curso:${cursos}" th:text="${curso.nombre}"  th:value="${curso.id}"></option>
+            </select>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+</head>
+
+</html>

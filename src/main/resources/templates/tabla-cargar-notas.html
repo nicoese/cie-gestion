@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="tabla-cargar-notas(notas)">
+        <p th:if="${notas==null || notas.size()==0}"><span>no se encontraron registros</span></p>
+
+        <form th:action="@{/admin/cargar-notas}" th:if="${notas!=null && notas.size()>0}" method="post" th:object="${notas}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Alumno</th>
+                    <th>DNI</th>
+                    <th>Modulo</th>
+                    <th>Curso</th>
+                    <th>Estado</th>
+                    <th>nota</th>
+                </tr>
+                </thead>
+
+                <tbody id="notasData">
+                <tr th:each="nota:${notas}">
+                    <input type="hidden" th:value="${nota.id}">
+                    <td th:text="${nota.getUser().getAlumno().getNombreCompleto()}"></td>
+                    <td th:text="${nota.getUser().getUsername()}"></td>
+                    <td th:text="${nota.modulo.nombre}"></td>
+                    <td th:text="${nota.curso.nombre}"></td>
+                    <td th:text="${nota.aprobado}"></td>
+                    <td>
+                        <input  id="nashe" type="number" placeholder="ingrese la calificacion" >
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                <button type="button" id="boton">ola</button>
+        </form>
+    </div>
+</head>
+
+</html>
+

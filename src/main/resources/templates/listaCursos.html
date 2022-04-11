@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Seleccione su Curso</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<section class="borde1">
+    <header>
+        <img src="/img/LOGO-CIE.png">
+
+    </header>
+    <h4>Gestion Administrador</h4>
+</section>
+
+<div class="selecto">
+    <form th:action="@{../../modulo/vista/{alumnoId}(alumnoId=${alumnoId})}" method="GET">
+        <label for="Select curso">Seleccione su Curso:</label>
+        <select name="cursoId" class="OS">
+            Seleccione su curso:</label>
+            <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+
+        </select><br>
+
+        <button class="cerrar2" type="submit">Seleccionar</button>
+
+    </form>
+</div>
+<br><br><br><br><br>
+<div class="cerrar2">
+    <button  class="cerrar2">
+        <a th:href="@{/logout}" style="text-decoration: none; color: #f2f2f2">Cerrar sesión</a></button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1 th:text="${'bienvenido/a, ' + session.usersession.getAdmin().getNombre()}"></h1>
+<div th:each="aut:${session.usersession.getAuthorities()}">
+    <p th:text="${aut.getAuthority()}"></p>
+    <p th:text="${session.usersession.role.name()}"></p>
+</div>
+<p></p>
+<!--<form th:action="@{/user/showUsers}">-->
+<!--    <button type="submit">mostrar usuarios</button>-->
+<!--</form>-->
+
+<ul>
+    <li><a th:href="@{/admin/desplegarcursos/desplegarnotas}">ver y/o modificar notas</a></li>
+    <li><a th:href="@{/registro/crear-user}">ingresar nuevo alumno al sistema</a></li>
+    <li><a th:href="@{/curso/crear-curso}">crear curso</a></li>
+    <li><a th:href="@{/modulo/crear}">crear modulo</a></li>
+    <li><a th:href="@{/inscripcion/enlistar}">inscribir alumno</a></li>
+    <li><a th:href="@{/admin/desplegarcursos/cargar-notas}">cargar planilla de notas</a></li>
+    <li><a th:href="@{/registro/modificar-alumno-existente}">modificar alumno</a></li>
+</ul>
+
+<div th:if="${cursos!=null}">
+    <div th:replace="lista-cursos-admin :: lista-cursos-admin(cursos=${cursos}, url=${url})"></div>
+</div>
+
+<div th:if="${modulos!=null}">
+    <div th:replace="lista-modulos-admin :: lista-modulos-admin(modulos=${modulos}, url=${url})"></div>
+</div>
+
+<div th:if="${notas!=null}">
+    <div th:replace="lista-notas-admin :: lista-notas-admin(notas=${notas})"></div>
+</div>
+
+<div th:if="${notaAeditar!=null}">
+    <div th:replace="form-editar-nota :: form-editar-nota(notaAeditar=${notaAeditar})"></div>
+</div>
+
+<div th:if="${newUser!=null}">
+    <div th:replace="form-nuevo-user :: form-nuevo-user(newUser=${newUser}, error=${error})"></div>
+</div>
+
+<div th:if="${newAlumno!=null}">
+    <div th:replace="form-nuevo-alumno :: form-nuevo-alumno(newAlumno=${newAlumno}, userId=${userId}, error=${error})"></div>
+</div>
+
+<div th:if="${pw!=null}">
+    <div th:replace="alumno-creado :: alumno-creado(pw=${pw})"></div>
+</div>
+
+<div th:if="${newCurso!=null}">
+    <div th:replace="form-nuevo-curso :: form-nuevo-curso(newCurso=${newCurso})"></div>
+</div>
+
+<div th:if="${newModulo!=null}">
+    <div th:replace="form-nuevo-modulo :: form-nuevo-modulo(newModulo=${newModulo}, cursos=${cursosForNewModulo})"></div>
+</div>
+
+<div th:if="${newInscripcion!=null}">
+    <div th:replace="enlistar-alumno :: enlistar-alumno(newInscripcion=${newInscripcion}, cursos=${cursosForInscripcion})"></div>
+</div>
+
+<div th:if="${notasCargar!=null}">
+    <div th:replace="tabla-cargar-notas :: tabla-cargar-notas(notas=${notasCargar})"></div>
+</div>
+
+<div th:if="${formbuscar!=null}">
+    <div th:replace="buscar-user :: buscar-user(error=${error})"></div>
+</div>
+
+<div th:if="${userAEditar!=null}">
+    <div th:replace="editar-user :: editar-user(userAEditar=${userAEditar}, error=${error})"></div>
+</div>
+
+<button>
+    <a style="text-decoration: none" th:href="@{/logout}">salir</a>
+</button>
+</div>
+
+
+<body>
+
+
+</body>
+<script>
+    document.getElementById('boton').addEventListener("click", (evt => {
+        let trs = document
+            .getElementById('notasData')
+            .children;
+
+        let notasList = [];
+
+        for (const tr of trs) {
+
+            let nota = {};
+            nota.id = tr.children[0].value;
+            nota.nota = tr.children[6].children[0].value;
+            notasList.push(nota);
+        }
+
+        console.log(notasList);
+
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(notasList)
+        };
+
+        fetch("/admin/cargar-notas", options)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                window.location.reload();
+            });
+
+    }));
+
+</script>
+</html>

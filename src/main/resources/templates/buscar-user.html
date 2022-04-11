@@ -1,0 +1,19 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="buscar-user(error)">
+        <form th:action="@{/registro/form-modificar-alumno/}">
+            <p th:if="${error!=null}" th:text="${error}"></p>
+            <label for="userId">
+                ingrese el dni del alumno:
+                <input type="text" id="userId" name="username" placeholder="dni">
+            </label>
+            <button type="submit">buscar</button>
+        </form>
+    </div>
+</head>
+
+</html>
