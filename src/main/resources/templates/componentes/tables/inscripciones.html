@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripciones</title>
+    <div th:fragment="inscripciones(inscripciones, requestFilterInscripcion, error)">
+        <p th:if="${error!=null}" class="error" th:text="${error}"></p>
+        <form action="/inscripcion/buscar">
+            <input type="text" placeholder="Buscar" name="cadena">
+            <button>Buscar</button>
+        </form>
+        <form action="/inscripcion/filtrar" th:object="${requestFilterInscripcion}">
+            <select th:field="*{nombreAdmin}" onchange="if (this.selectedIndex) setInscripcionId()" id="">
+                <option value="">---------------</option>
+                <option th:each="admin:${session.admins}" th:text="${admin.admin.nombre}" th:value="${admin.admin.getNombreCompleto()}"></option>
+            </select>
+            <select name="turno" th:field="*{turno}" onchange="if (this.selectedIndex) setInscripcionId()" id="">
+                <option value="">---------------</option>
+                <option th:each="turno:${session.turnos}" th:field="*{turno}" th:value="${turno}" th:text="${turno.name()}"></option>
+            </select>
+
+                <input type="hidden" class="requestInscripcion" th:each="inscripcion:${inscripciones}" th:attr="caca=${inscripcion.id}" th:value="${inscripcion.id}" th:name="${inscripcion.id}" th:field="*{inscripciones}">
+
+            <button type="submit">filtrar</button>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre Alumno</th>
+                <th>DNI</th>
+                <th>Curso</th>
+                <th>Turno</th>
+                <th>Fecha</th>
+                <th>administrador encargado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inscripcion:${inscripciones}">
+                <td th:text="${inscripcion.nombreAlumno}"></td>
+                <td th:text="${inscripcion.DNIAlumno}"></td>
+                <td th:text="${inscripcion.nombreCurso}"></td>
+                <td th:if="${inscripcion.turno!=null}" th:text="${inscripcion.turno.name()}"></td>
+                <td th:if="${inscripcion.turno==null}" th:text="${''}"></td>
+                <td th:text="${inscripcion.fechaInscripcion}"></td>
+                <td th:text="${inscripcion.nombreAdmin}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</head>
+
+</html>

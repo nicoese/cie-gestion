@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva comision</title>
+    <div th:fragment="form-nueva-comision(nuevaComision, error)">
+        <p th:if="${error!=null}" th:text="${error}" class="error"></p>
+        <form action="/comision/crear" method="post" th:object="${nuevaComision}">
+            <label class="label">Nombre</label>
+            <div class="form-input">
+                <input type="text" class="this-input" th:field="*{nombre}">
+            </div>
+            <label class="label">Ano</label>
+            <div class="form-input">
+                <select name="ano" class="this-input" th:field="*{ano}">
+                    <option th:each="ano:${session.anos}" th:value="${ano}" th:text="${ano}"></option>
+                </select>
+            </div>
+            <label for="" class="label">Turno</label>
+            <div class="form-input">
+                <select name="turno" class="this-input" th:field="*{turno}">
+                    <option th:each="turno:${session.turnos}" th:value="${turno}" th:text="${turno}"></option>
+                </select>
+            </div>
+            <label for="" class="label">Curso</label>
+
+            <div class="form-input">
+                <select name="curso" id="" class="this-input" th:field="*{curso}">
+                    <option value="">-----------------</option>
+                    <option th:each="curso:${session.cursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+                <button class="this-input">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</head>
+
+</html>

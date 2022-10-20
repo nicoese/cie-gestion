@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/user}" th:method="post" th:object="${user}">
+    <input type="text" name="email" placeholder="email" th:field="*{email}">
+    <input type="text" name="username" placeholder="dni" th:field="*{username}">
+    <input type="text" name="password" placeholder="password" th:field="*{password}">
+    <select name="role" th:field="*{role}">
+        <option th:each="rol:${roles}" th:text="${rol.name()}" th:value="${rol}"></option>
+    </select>
+    <button type="submit">enviar</button>
+</form>
+</body>
+</html>

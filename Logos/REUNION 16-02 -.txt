@@ -1,0 +1,25 @@
+Condicion // Regular
+             Libre - (nose conecta a la clase).
+
+
+MenuModulos ver - que no figure historico, solo alumnos actuales.(solucion filtro) - que no muestre lo q terminaron el curso // 
+
+
+Nuevo Alumno - cargar automatico a los modulos /// -+- ///
+
+
+agregar a tabla menu modulos - admin -
+- condicion
+- Turno
+- Nota 
+- Estado /-/ 
+
+Reportes /-/ POR ALUMNO ///// -- INTERFAZ DEL ALUMNO - SACAMOS DE LA BASE
+
+agregar campo de condicion al altaALUMNO.
+
+mas adelante /// -- /// 
+
+
+
+ 

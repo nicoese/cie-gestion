@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar modulo</title>
+    <div th:fragment="form-modificar-modulo(modModulo, modulos, cursos, error)">
+        <div class="cabecera">
+            <h1><span>Modificar modulo</span></h1>
+        </div>
+        <form th:action="@{/modulo/modificar}" th:object="${modModulo}" method="post">
+            <p class="error" th:if="${error!=null}" th:text="${error}"></p>
+
+            <label class="label"> Seleccione el modulo</label>
+            <div class="form-input">
+                <select class="this-input" th:field="*{id}" id="modulos">
+                    <option th:each="modulo:${modulos}" th:text="${modulo.nombre}+' | '+${modulo.curso.nombre}" th:value="${modulo.id}"></option>
+                </select>
+            </div>
+            <label class="label">Seleccione el curso</label>
+            <div class="form-input">
+                <select class="this-input" th:field="*{curso.id}">
+                    <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+                </select>
+            </div>
+            <label class="label">Cambiar Nombre</label>
+            <div class="form-input">
+                <input class="this-input" type="text" placeholder="ingrese el nombre" th:field="*{nombre}">
+            </div>
+            <div class="form-input">
+                <button class="this-input" type="submit">Modificar</button>
+            </div>
+        </form>
+
+
+    </div>
+</head>
+
+</html>

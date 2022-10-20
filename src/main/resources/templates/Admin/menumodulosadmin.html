@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Alumnos</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/style.css">
+
+
+</style>
+
+</head>
+<section class="borde1">
+    <header >
+        <img src="/Logos/LOGO-CIE.png" >
+      </header>
+      <h4 class="gestion">Gestion Administrador</h4>
+    </section>
+    <div class="curso">
+        <h1>NOMBRE DEL CURSO</h1>
+        <h2>Nombre Modulo</h2>
+    </div>
+<div class ="funciones1">
+        <button class="funciones"><a href=""></a> NUEVO ALUMNO</button>
+        <button class="funciones"><a href=""></a> EVALUACIONES</button>
+</div>
+
+
+<section class="tablamodulos">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>				        	
+            <tr th:each="alumno, iter : ${alumnos}">
+                <td>-</td>
+                <td><span th:text="${alumno.dni}"></span></td>
+                <td><span th:text="${alumno.nombre}"></span></td>
+                <td><span th:text="${alumno.apellido}"></span></td>
+                
+                <td>
+                    <form th:action="@{urldelget}" method="GET">
+                        <input th:value="${alumno.dni}" type="hidden" name="id" id="id">
+                    <button class="cerrar3" type="submit">EDITAR</button></form></td>
+
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="cerrar2">
+    <button class="cerrar2"  >Seleccionar Modulo</button>
+    </div>
+<div class="cerrar2">
+    <button class="cerrar2"  >Seleccionar Curso</button>
+    </div>
+<div class="cerrar2">
+    <button class="cerrar2"  >Cerrar sesión</button>
+    </div>
+</body>
+</html>

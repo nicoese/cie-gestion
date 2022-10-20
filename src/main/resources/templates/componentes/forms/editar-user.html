@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <div th:fragment="editar-user(userAEditar, error)">
+    <form th:action="@{/registro/modificar-alumno}" method="post" th:object="${userAEditar}">
+        <p class="error" th:if="${error != null}">
+            <p th:text="${error}"></p>
+        </p>
+        <label for="email">
+        email
+        <input type="email" id="email" th:placeholder="${userAEditar.email}" th:field="*{email}">
+      </label>
+      <label for="dni">
+        dni
+          <p id="dni" th:text="${userAEditar.username}"></p>
+          <input type="hidden" th:field="*{username}">
+      </label>
+    <label for="nombre">
+        nombre
+        <input type="text" id="nombre" th:placeholder="${userAEditar.getAlumno().nombre}" th:field="*{alumno.nombre}">
+      </label>
+    <label for="apellido">
+        apellido
+        <input type="text" id="apellido" th:placeholder="${userAEditar.getAlumno().apellido}" th:field="*{alumno.apellido}">
+      </label>
+   <label for="domicilio">
+        domicilio
+        <input type="text" id="domicilio" th:placeholder="${userAEditar.getAlumno().domicilio}" th:field="*{alumno.domicilio}">
+      </label>
+    <label for="telefono">
+        nro. de telefono
+        <input type="text" id="telefono" th:placeholder="${userAEditar.getAlumno().numeroDeTelefono}" th:field="*{alumno.numeroDeTelefono}">
+      </label>
+        <input type="hidden" id="idAlumno" th:value="${userAEditar.getAlumno().id}" th:field="*{alumno.id}">
+        <button type="submit" id="btnModificarAlumno" >submit</button>
+
+    </form>
+
+  </div>
+</head>
+
+</html>

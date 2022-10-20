@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="form-nuevo-curso(newCurso, error)">
+        <div class="cabecera">
+            <h1><span>Crear Curso</span></h1>
+        </div>
+        <form th:action="@{/curso/crear}" method="post" th:object="${newCurso}">
+            <p class="error" th:if="${error!=null}" th:text="${error}"></p>
+            <label class="label">Nombre</label>
+            <div class="form-input">
+                <input class="this-input" type="text" placeholder="nombre del curso" th:field="*{nombre}">
+            </div>
+            <label class="label"></label>
+            <div class="form-input">
+                <select class="this-input" name="categoria" id="">
+                    <option th:each="cat:${newCurso.getCategorias}" th:text="${cat.name()}" th:value="${cat}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+                <select name="" id="" class="this-input" th:field="*{duracion}">
+                    <option th:each="duracion:${session.duraciones}" th:value="${duracion}" th:text="${duracion}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+            <button class="this-input" type="submit">cargar</button>
+            </div>
+        </form>
+    </div>
+</head>
+
+</html>
