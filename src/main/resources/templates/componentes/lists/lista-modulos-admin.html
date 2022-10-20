@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Modulos</title>
+    <div th:fragment="lista-modulos-admin(modulos, url)">
+        <div class="cabecera">
+            <h1><span>Modulos</span></h1>
+        </div>
+        <form th:action="@{/admin/{url}(url=${url})}">
+            <label class="label">Seleccionar modulo</label>
+            <div class="form-input">
+                <select class="this-input" name="moduloId" id="moduloId">
+                    <option th:each="modulo:${modulos}" th:text="${modulo.nombre}" th:value="${modulo.id}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+                <button class="this-input" type="submit">seleccionar</button>
+            </div>
+        </form>
+    </div>
+</head>
+
+</html>

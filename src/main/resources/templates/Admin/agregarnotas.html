@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AgregarNotas</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/style.css">
+
+</style>
+</head>
+<section class="borde1">
+    <header >
+        <img src="/Logos/LOGO-CIE.png" >
+      </header>
+      <h4 class="gestion">Gestion Administrativa</h4>
+    </section>
+    <div class="curso">
+        <h1>NOMBRE MODULO</h1>   
+    </div>  
+    <h4>Agregar Nota</h4>
+    <div class="tablamodulos">
+       
+        <table>
+            
+            <thead>
+                
+                <tr>
+                    <th>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Nota</th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="alumno:${alumnos}" >
+                    <td>-</td>
+                    <td><span th:text="${alumno.dni}"></span></td>
+                    <td><span th:text="${alumno.nombre}"></span></td>
+                    <td><label for="nota"></label>
+                    <input class="input3" type="number" name="nota" id="nota"><br>
+                
+                </tr><br>
+                
+            </tbody>
+        
+        </table>
+        <button class="cerrar4" type="submit" >Guardar</button>  
+    </div>
+</div>
+    
+    
+<div class="cerrar2">
+
+<div class="cerrar2">
+    <button class="cerrar2"  >Seleccionar Curso</button>
+    </div>
+<div class="cerrar2">
+    <button class="cerrar2"  >Cerrar sesión</button>
+    </div> 
+
+
+
+</body>
+</html>

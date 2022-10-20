@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>CIE</title>
+    <link th:href="@{../css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{style.css}">
+</head>
+<body>
+
+
+<section class="borde">
+    <header>
+        <img src="/img/LOGO-CIE.png">
+
+    </header>
+
+    <h4>Gestion Administrador</h4>
+    <section class="usuario">
+        <form class="form" th:action="@{/login}" method="post">
+            <label for="dni">D.N.I.</label>
+
+            <input type="text" class="inicio" id="dni" name="username" placeholder="xx.xxx.xxx"><br>
+
+            <label for="contraseña">Contraseña</label>
+
+            <input type="password" class="inicio" id="contraseña" name="password" placeholder="Ingrese su contraseña">
+            <div class="cambiar">
+                <a href="">Cambiar Contraseña /</a><a href="">Olvido su Contraseña</a>
+            </div>
+            <br>
+            <br>
+            <button class="ingresar" style="cursor:pointer;" type="submit">Ingresar</button>
+        </form>
+    </section>
+
+</section>
+
+<!--<footer>-->
+<!--    <button type="button"><img src="Logos/Logo Facebook.png" height="30"></button>-->
+<!--    <a target="_blank" href="https://www.facebook.com/CentroIntegralDeEstudiosCie/">Facebook</a><br>-->
+
+<!--    <button type="button"><img src="Logos/Logo Insta.png" height="30"></button>-->
+<!--    <a target="_blank" href="https://instagram.com/cie.educaciononline">Instagram</a><br>-->
+
+<!--    <button type="button"><img src="Logos/Logo Whats.png" height="28"></button>-->
+<!--    <a target="_blank" href="https://api.whatsapp.com/message/MRND6YNQQDQGK1">Whatsapp</a>-->
+
+<!--    <h3>CONTACTO</h3>-->
+<!--    <h4>Teléfonos </h4>-->
+<!--    Aministacion - <a target="_blank" href="https://wa.me/5493517619467">(0351) - 15619467</a><br>-->
+<!--    Gestión - <a target="_blank" href="https://wa.me/5493518174158">(0351) - 158174158</a><br>-->
+<!--    Técnico - <a target="_blank" href="https://wa.me/5493518174157">(0351) - 158174157</a><br>-->
+<!--    Pedagógico - <a target="_blank" href="https://wa.me/5493515195753">(0351) - 155195753</a><br>-->
+<!--    Email - <a href="mailto:ciecordobacapital@gmail.com">ciecordobacapital@gmail.com</a>-->
+
+
+<!--    <img src="Logos/C.png" height="150">-->
+
+<!--</footer>-->
+</body>
+</html>

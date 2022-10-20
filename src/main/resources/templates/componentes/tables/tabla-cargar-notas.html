@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org " xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="tabla-cargar-notas(notas, mensaje, requestFilterNota)">
+
+        <p th:if="${mensaje!=null}" class="exito justify-content-center" th:text="${mensaje}"></p>
+
+        <form th:action="@{/nota/filter}">
+            <label class="label">Buscar</label>
+            <div class="form-input">
+                <input type="text" name="filter" class="this-input">
+            </div>
+            <button type="submit" class="label">Buscar</button>
+        </form>
+
+        <form th:action="@{/nota/filtrar}" method="post" th:object="${requestFilterNota}">
+            <select onchange="if (this.selectedIndex) getFilters()" th:field="*{estado}" id="estadoNota">
+                <option value="">----------</option>
+                <option th:each="estado:${session.estados}" th:text="${estado.name()}"
+                        th:value="${estado}"></option>
+            </select>
+            <select onchange="if (this.selectedIndex) getFilters()" th:field="*{alta}" id="alumnoRegular">
+                <option value="">----------</option>
+                <option th:value="${true}">alumno regular</option>
+                <option th:value="${false}">alumno libre</option>
+            </select>
+            <select name="turno" th:field="*{turno}" id="">
+                <option value="">-----------</option>
+                <option th:each="turno:${session.turnos}" th:text="${turno.name()}" th:value="${turno}"></option>
+            </select>
+
+            <input type="hidden" th:if="${notas!=null && notas.size()>0}" th:each="nota:${notas}" th:field="*{notas}" th:id="${nota.id}" class="laconchadetumadre">
+            <button onclick="getFilters()" type="submit">filtrar</button>
+        </form>
+
+        <div th:if="${notas!=null && notas.size()>0}">
+            <form action="/nota/cargar-notas"  method="post" th:object="${notas}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>DNI</th>
+                        <th>Modulo</th>
+                        <th>Curso</th>
+                        <th>Comision</th>
+                        <th>Turno</th>
+                        <th>Editar</th>
+                        <th>X</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="notasData">
+                    <tr th:each="nota:${notas}">
+                        <input type="hidden" th:value="${nota.id}">
+                        <td th:text="${nota.getUser().getAlumno().getNombreCompleto()}"></td>
+                        <td th:text="${nota.getUser().getUsername()}"></td>
+                        <td th:text="${nota.modulo.nombre}"></td>
+                        <td th:text="${nota.curso.nombre}"></td>
+                        <td th:text="${nota.comision.nombre}"></td>
+                        <td th:text="${nota.turno}"></td>
+                        <td th:text="${nota.aprobado}+'('+${nota.nota}+')'"></td>
+                        <td>
+                            <input id="nashe" type="number" placeholder="ingrese la calificacion">
+                        </td>
+                        <td><button><a th:href="@{/nota/delete-nota/{notaId}(notaId=${nota.id})}" >eliminar</a></button></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <button onclick="sendNotas()" type="button" id="boton">ola</button>
+            </form>
+        </div>
+
+    </div>
+</head>
+
+</html>
+

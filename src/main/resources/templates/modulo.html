@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+
+    <title>Modulos</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        table, th, td {
+            border: 1px solid rgb(104, 100, 100)
+        }
+    </style>
+
+</head>
+<body>
+<section class="borde1">
+    <header>
+        <img src="/img/LOGO-CIE.png">
+    </header>
+</section>
+<div class="curso">
+    <h1 th:text="${alumno.getNombreCompleto().toUpperCase()}"></h1>
+    <h2 th:text="${curso.nombre.toUpperCase()}"></h2>
+
+</div>
+</section>
+
+
+<!--<section >
+    <form action="file:///C:/Users/Administrador/3D%20Objects/C.I.E.%20HTML/inscripcionok.html" method= "POST" >
+    <button type="submit">INSCRIPCIONES A MODULOS </button><br>
+    </form>
+</selection>  -->
+
+<section class="tablamodulos">
+    <table>
+        <thead>
+        <tr>
+            <th>Modulo</th>
+            <th>Curso</th>
+            <th>Estado</th>
+            <th>Nota</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nota:${notas}">
+            <td>-</td>
+            <td><span th:text="${nota.modulo.nombre}"></span></td>
+            <td><span th:text="${nota.curso.nombre}"></span></td>
+            <td><span th:text="${nota.aprobado}"></span></td>
+            <td><span th:text="${nota.nota}"></span></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</section>
+<div class="cerrar2">
+    <button class="cerrar2">
+        <a th:href="@{/alumno/cursosAlumno/{id}(id=${session.usersession.getAlumno().id})}" style="text-decoration: none; color: #f2f2f2" >Seleccionar Curso</a>
+        </button>
+</div>
+<div class="cerrar2">
+    <button class="cerrar2" th:href="@{/logout}">
+        <a style="text-decoration: none; color: #f2f2f2;" th:href="@{/logout}">Cerrar sesión</a>
+    </button>
+</div>
+<div class="cerrar2">
+</div>
+
+<footer>
+
+    <section class="redes">
+        <img src="/img/Logo Facebook.png" height="30">
+        <a target="_blank" href="https://www.facebook.com/CentroIntegralDeEstudiosCie/">Facebook</a><br>
+
+
+        <img src="/img/Logo Insta.png" height="30">
+        <a target="_blank" href="https://instagram.com/cie.educaciononline">Instagram</a><br>
+
+
+        <img src="/img/Logo Whats.png" height="30">
+        <a target="_blank" href="https://api.whatsapp.com/message/MRND6YNQQDQGK1">Whatsapp</a>
+    </section>
+
+    <section class="contactos">
+        <h4>CONTACTO</h4>
+
+        Aministacion - <a target="_blank" href="https://wa.me/5493517619467">(0351) - 15619467</a><br>
+        Gestión - <a target="_blank" href="https://wa.me/5493518174158">(0351) - 158174158</a><br>
+        Técnico - <a target="_blank" href="https://wa.me/5493518174157">(0351) - 158174157</a><br>
+        Pedagógico - <a target="_blank" href="https://wa.me/5493515195753">(0351) - 155195753</a><br>
+        Email - <a href="mailto:ciecordobacapital@gmail.com">ciecordobacapital@gmail.com</a>
+    </section>
+
+
+    <section>
+        <img src="/img/C.png" height="150">
+    </section>
+
+</footer>
+
+
+</body>
+</html>

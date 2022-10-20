@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Seleccione su Curso</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/stylelogin.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header >
+        <hr size="1px" color="cadetblue"/>
+        <h4>  INICIAR SESIÓN </h4>
+        </header>
+        <hr id="hr2" size="1px" color="cadetblue"/>
+        <h4>Gestion Administrador</h4>
+
+<div class="selecto">
+    <form th:action="@{../../modulo/vista/{alumnoId}(alumnoId=${alumnoId})}" method="GET">
+        <label for="Select curso">Seleccione su Curso:</label>
+        <select name="cursoId" class="OS">
+            Seleccione su curso:</label>
+            <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+
+        </select><br>
+
+        <button class="ingresar" type="submit">Seleccionar</button>
+
+    </form>
+</div>
+<br><br><br><br><br>
+<div class="cerrar2">
+    <button  class="cerrar2">
+        <a th:href="@{/logout}" style="text-decoration: none; color: #f2f2f2">Cerrar sesión</a></button>
+</div>
+
+<section>
+    <p> © 2011 Centro Integral de Estudios. Todos los derechos reservados.</p>
+    <div class="links">
+    
+    <a class="links " href="">Facebook</a>
+    <a class="links" href="">Instagram</a>
+    <a class="links" target="_blank" href="https://wa.me/5493517619467">Administracion</a>
+    <a class="links"  target="_blank" href="https://wa.me/5493518174158">Gestión</a>
+    <a class="links"  target="_blank" href="https://wa.me/5493518174157">Técnico</a>
+    <a class="links"  target="_blank" href="https://wa.me/5493515195753">Pedagógico</a>
+    <a class="links" href="mailto:ciecordobacapital@gmail.com">ciecordobacapital@gmail.com</a>
+    <a href=""></a>
+    </div>
+    <div class="logo">
+      <img  src="/src/main/resources/static/img/LOGO-CIE.png" alt="">
+    
+    </div>
+    </section>
+</body>
+</html>

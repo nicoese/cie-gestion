@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="enlistar-alumno(newInscripcion, cursos)">
+        <div class="cabecera">
+            <h1><span>Inscribir alumno</span></h1>
+        </div>
+        <form th:action="@{/inscripcion/enlistar}" method="post">
+            <label class="label">DNI</label>
+            <div class="form-input">
+                <input class="this-input" type="text" placeholder="DNI del alumno" name="userId">
+            </div>
+            <label class="label" for="cursos">Seleccione el curso</label>
+            <div class="form-input">
+                <select class="this-input" name="cursoId" id="cursos">
+                    <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+                </select>
+            </div>
+            <label class="label">Seleccione el turno</label>
+            <div class="form-input">
+                <select class="this-input" name="turno" id="">
+                    <option th:each="turno:${newInscripcion.getTurnos()}" th:value="${turno}" th:text="${turno.name()}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+                <label for="" class="label">Seleccionar comision</label>
+                <input type="text" onchange="findComision(this.value)" placeholder="Comision..." id="inputComision" >
+                <select name="comision" id="comisionSelect">
+                    <option value="">---------</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <button class="this-input" type="submit">Inscribir</button>
+            </div>
+
+        </form>
+    </div>
+</head>
+
+</html>

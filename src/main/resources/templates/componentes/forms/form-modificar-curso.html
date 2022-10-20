@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Curso</title>
+    <div th:fragment="form-modificar-curso(modCurso, cursos, error)">
+        <div class="cabecera">
+            <h1><span>Modificar Curso</span></h1>
+        </div>
+        <form th:action="@{/curso/modificar-curso}" th:object="${modCurso}" method="post">
+            <p class="error" th:if="${error!=null}" th:text="${error}"></p>
+
+            <label class="label" for="cursos">Seleccione el curso</label>
+            <div class="form-input">
+                <select class="this-input" th:field="*{id}" id="cursos">
+                    <option th:each="curso:${cursos}" th:text="${curso.nombre}" th:value="${curso.id}"></option>
+                </select>
+            </div>
+            <label class="label">Seleccione la categoria</label>
+            <div class="form-input">
+                <select class="this-input" th:field="*{categoria}" id="">
+                    <option th:each="cat:${modCurso.getCategorias()}" th:value="${cat}"
+                            th:text="${cat.name()}"></option>
+                </select>
+            </div>
+            <label class="label" for="">Cambiar nombre del curso </label>
+            <div class="form-input">
+                <input class="this-input" type="text" placeholder="ingrese el nombre" th:field="*{nombre}">
+            </div>
+            <label for="" class="label">Duracion</label>
+            <div class="form-input">
+                <select name="duracion" th:field="*{duracion}" class="this-input">
+                    <option th:each="duracion:${session.duraciones}" th:value="${duracion}" th:text="${duracion.name()}"></option>
+                </select>
+            </div>
+
+            <div class="form-input">
+                <button class="this-input" type="submit">Modificar</button>
+            </div>
+        </form>
+    </div>
+</head>
+
+</html>

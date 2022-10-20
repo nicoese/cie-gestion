@@ -1,0 +1,26 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar usuario</title>
+    <div th:fragment="buscar-user-for-baja">
+        <div class="cabecera">
+            <h1><span>Buscar usuario</span></h1>
+        </div>
+        <form th:action="@{/alumno/datos}" method="get">
+            <p class="error" th:if="${error!=null}" th:text="${error}"></p>
+
+            <label class="label" for="userId">DNI</label>
+            <div class="form-input">
+                <input class="this-input" type="text" id="userId" name="username"
+                       placeholder="Ingrese el DNI del alumno">
+            </div>
+            <div class="form-input">
+            <button class="this-input" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+</head>
+
+</html>

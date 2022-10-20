@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="form-nuevo-alumno(newAlumno, userId, error)">
+        <div class="cabecera">
+            <h1><span>Datos Personales</span></h1>
+        </div>
+        <form th:action="@{/registro/crear-alumno/{userId}(userId=${userId})}" method="post" th:object="${newAlumno}"
+              name="alumno">
+            <p class="error" th:if="${error!=null}" th:text="${error}"></p>
+            <label class="label">Nombre</label>
+            <div class="form-input">
+                <input class="this-input" type="text" th:placeholder="nombre" th:field="*{nombre}">
+            </div>
+            <label class="label">Apellido</label>
+            <div class="form-input">
+                <input class="this-input" type="text" th:placeholder="apellido" th:field="*{apellido}">
+            </div>
+            <label class="label">Domicilio</label>
+            <div class="form-input">
+                <input class="this-input" type="text" th:placeholder="domicilio" th:field="*{domicilio}">
+            </div>
+            <label class="label">Numero Telefonico</label>
+            <div class="form-input">
+                <input class="this-input" type="text" th:placeholder="numerodetelefono" th:field="*{numeroDeTelefono}">
+            </div>
+            <label class="label">Genero</label>
+            <div class="form-input">
+                <select class="this-input" name="sexo" id="">
+                    <option th:each="sexo:${newAlumno.getSexos()}" th:text="${sexo.name()}" th:value="${sexo}"
+                            th:field="*{sexo}"></option>
+                </select>
+            </div>
+            <label class="label">Fecha de nacimiento</label>
+            <div class="form-input">
+                <input class="this-input" name="fecha" type="date" th:placeholder="fechadenac">
+            </div>
+            <div class="form-input">
+                <button class="this-input" type="submit">guardar</button>
+            </div>
+        </form>
+
+    </div>
+</head>
+
+</html>

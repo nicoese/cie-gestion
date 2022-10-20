@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="lista-notas-admin(notas)">
+
+<!--        <form action="" >-->
+<!--            <input th:if="${}" type="text" >-->
+<!--        </form>-->
+
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Nombre Alumno</th>
+                <th>Modulo</th>
+                <th>Curso</th>
+                <th>Estado</th>
+                <th>Nota</th>
+                <th>modificar</th>
+                <th>X</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="nota:${notas}">
+                <td>-</td>
+                <td><span th:text="${nota.getUser().getAlumno().getNombreCompleto()}"></span></td>
+                <td><span th:text="${nota.modulo.nombre}"></span></td>
+                <td><span th:text="${nota.curso.nombre}"></span></td>
+                <td><span th:text="${nota.aprobado}"></span></td>
+                <td><span th:text="${nota.nota}"></span></td>
+                <td><button><a th:href="@{/admin/modificarnotas/{notaId}(notaId=${nota.id})}">modificar</a></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</head>
+
+</html>

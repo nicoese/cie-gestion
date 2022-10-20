@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Curso y modulo</title>
+    <div th:fragment="lista-curso-modulo(cursos)">
+        <div class="cabecera">
+            <h1><span>Seleccionar el modulo</span></h1>
+        </div>
+        <form th:action="@{/nota/cargar-notas}" >
+            <label class="label">Seleccionar curso</label>
+            <div class="form-input">
+                <select onchange="if (this.selectedIndex) doSomething(this.children[this.selectedIndex].value)" class="this-input"
+                        name="cursoId" id="cursoId">
+                    <option>--------------</option>
+                    <option th:each="curso:${cursos}" th:text="${curso.nombre}"
+                            th:value="${curso.id}"></option>
+                </select>
+            </div>
+            <input type="hidden" name="url" th:value="${url}">
+
+            <label class="label">Seleccionar modulo</label>
+            <div class="form-input">
+                <select id="moduloaseleccionar" name="modulo" class="this-input" >
+                    <option>------------</option>
+                </select>
+            </div>
+
+            <div class="form-input">
+                <button class="this-input" type="submit">seleccionar</button>
+            </div>
+        </form>
+    </div>
+</head>
+</html>

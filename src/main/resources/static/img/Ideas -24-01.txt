@@ -1,0 +1,45 @@
+examen modalidad?
+Asistencias?
+
+
+
+Modulos
+Filtro de materias segun Estado Academico
+
+
+
+Agregar Notas(column) - Modulos
+Archivero (pdf)
+Profesor
+
+
+Inscripcion a Modulo
+
+Pago?
+
+Mail por gmail creado automatico para canalizar todo en un sistema
+*******
+inscripcion
+******
+
+
+medios de pagos
+Inscripcion bonificada
+curso - pagos mensuales -  cuotas - se le da baja de clasroom si no paga
+
+Gmail automatico - ok
+Recuperatorio - Solo recupera el examen
+
+Modulos correlativos - no puede deber mas de 2 modulos // 
+
+Calendario // por curso -  / ver el dia de las clases / el dia del examen del modulo / el dia del recupera ///// 
+
+
+
+Curso horarios: turno - mañana / turno ///
+
+*****************
+gente ahi hice un reunioncita con la gente del insituto, mañana les comento bien algunas cositas que no estaban claras, como x ejemplo q los modulos si son correlativos y podes tener hasta 1 modulo desaprobado, al 2 modulo no podes acceder a cursar ningun otro hasta q apruebes uno por lo menos... 
+
+
+

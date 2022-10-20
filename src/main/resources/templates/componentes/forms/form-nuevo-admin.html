@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo administrador</title>
+    <div th:fragment="form-nuevo-admin(newAdmin, error)">
+        <p th:if="${error!=null}" th:text="${error}" class="error"></p>
+        <form action="/admin/crearadmin" method="post">
+            <label for="" class="label">email</label>
+            <div class="form-input">
+                <input type="email" class="this-input" name="email">
+            </div>
+            <label for="" class="label">Contrasena</label>
+            <div class="form-input">
+                <input type="password" class="this-input" name="password">
+            </div>
+            <label for="" class="label">Repetir contrasena</label>
+            <div class="form-input">
+                <input type="password" class="this-input" name="passwordCheck">
+            </div>
+            <label for="" class="label">Nombre</label>
+            <div class="form-input">
+                <input type="text" class="this-input" name="nombre">
+            </div>
+            <label for="" class="label">Apellido</label>
+            <div class="form-input">
+                <input type="text" class="this-input" name="apellido">
+            </div>
+            <label for="" class="label">DNI</label>
+            <div class="form-input">
+                <input type="text" class="this-input" name="username">
+            </div>
+            <label for="" class="label">sexo</label>
+            <div class="form-input">
+                <select name="sexo" class="this-input">
+                    <option th:each="sexo:${session.sexos}" th:text="${sexo.name()}" th:value="${sexo}"></option>
+                </select>
+            </div>
+            <div class="form-input">
+                <button class="this-input" type="submit">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</head>
+</html>

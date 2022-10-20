@@ -1,0 +1,140 @@
+*{
+}
+
+.navbar{
+    max-height: 70px;
+}
+
+.container-flex{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-item{
+    margin: 0;
+}
+
+.barra{
+    background-color: aquamarine;
+}
+
+.botonera{
+    background-color: #202020;
+}
+.componente{
+    background-color: white;
+}
+.boton-botonera{
+    background-color: #202020;
+    min-height: 40px;
+    border: none;
+    border-bottom: 1px solid #303030;
+}
+.boton-botonera:hover{
+    border-left: 5px solid lightskyblue ;
+    color: white;
+}
+.boton-botonera:focus{
+    border-left: 5px solid dodgerblue;
+    text-emphasis: white;
+    color: white;
+}
+.dropdown-item{
+    background-color: #202020;
+    color: white;
+}
+.dropdown-item:focus{
+    background-color: aquamarine;
+}
+.cabecera{
+    padding: 20px;
+    color: black;
+    font-weight: bolder;
+}
+.label{
+    margin-left: 20px;
+    font-size: small;
+    font-weight: bold;
+}
+.form-input{
+    display: flex;
+    width: 100%;
+    max-height: 50px;
+    justify-content: center;
+    padding: 10px 20px;
+    margin-bottom: 12pxpx;
+
+}
+.this-input{
+    width: 100%;
+    background-color: white;
+    border: none;
+    outline: 1px solid black;
+}
+.this-input:focus{
+    outline: 2px solid black;
+}
+
+.icon-admin{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+img{
+    background-color: #252525;
+    outline: 1px solid #606060;
+    border-radius: 20%;
+    width: 30%;
+}
+img:hover{
+    outline: 1px solid aquamarine;
+}
+
+.link{
+    width:100%;
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+    text-align:center;
+    display:block;
+    text-decoration: none;
+    color: #686868;
+}
+.link:hover{
+    color: white;
+}
+.link:focus{
+    text-emphasis: white;
+    color: white;
+}
+
+.form-input button:hover{
+    outline: aquamarine solid 2px;
+    text-emphasis: black;
+}
+
+.error{
+    width: 90%;
+    margin-left: 20px;
+    color: palevioletred;
+    border-bottom: 3px solid palevioletred;
+}
+
+.exito{
+    display: flex;
+    width: 90%;
+    border: 3px solid lightskyblue;
+    margin-top: 30px;
+
+
+    max-height: 40px;
+    padding-top: 3px;
+    margin-left: 25px;
+}
+
+.exito p{
+    color: #606060;
+}

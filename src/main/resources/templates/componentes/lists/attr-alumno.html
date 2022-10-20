@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Baja/Alta Alumno</title>
+    <div th:fragment="attr-alumno(user)">
+        <ul>
+            <label class="label">Nombre Alumno</label>
+            <li th:text="${user.alumno.getNombreCompleto()}"></li>
+           <label class="label">DNI</label>
+            <li th:text="${user.username}"></li>
+           <label class="label" th:text="'Cursos: ' + ${user.alumno.cursos.size()}"></label>
+            <li th:text="${user.alumno.cursos.size()}"></li>
+            <li th:each="curso:${cursos}" th:text="${curso.nombre}"></li>
+           <label class="label">Estado</label>
+            <li th:if="${user.alumno.alta}">Alumno Regular</li>
+            <li th:if="${!user.alumno.alta}">Alumno Libre</li>
+        </ul>
+        <form action="/alumno/baja-alta" method="post">
+            <label class="label">Cambiar estado</label>
+            <select name="bajaAlta">
+                <option value="true">Regular</option>
+                <option value="false">Libre</option>
+            </select>
+            <input type="hidden" name="user" th:value="${user.alumno.id}">
+            <button type="submit">Actualizar</button>
+        </form>
+    </div>
+</head>
+
+</html>
